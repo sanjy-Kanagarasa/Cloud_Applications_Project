@@ -1,0 +1,29 @@
+page-driver-dashboard {
+  .dashboard{
+    background-color: #51CFB1;
+  }
+  ion-card {
+    position: relative;
+    text-align: center;
+    height: 100px;
+    padding: 5px;
+  }
+
+  .card-title {
+    //position: absolute;
+    top: 50%;
+    left: 50%;
+    font-size: 2.0em;
+    width: 100%;
+    font-weight: bold;
+    color: #fff;
+  }
+
+  .card-subtitle {
+    font-size: 1.0em;
+    position: absolute;
+    top: 52%;
+    width: 100%;
+    color: #fff;
+  }
+}

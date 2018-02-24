@@ -1,0 +1,13 @@
+﻿ {
+        "FirstName": "Chingiz",
+        "LastName": "Mizambekov",
+        "RegistrationDate": "2017-10-26T14:31:12.4704969",
+        "Password": "test123",
+        "UserRoleType": 1,
+        "IsApproved": true,
+        "Email": "chingiz@uber.be",
+        "PhoneNumber": 4455221122,
+        "StreetName": "Ellermanstraat",
+        "StreetNumber": "41",
+        "ZipCode": "2060"
+    }

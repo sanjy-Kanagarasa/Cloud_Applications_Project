@@ -1,0 +1,80 @@
+
+<ion-header>
+
+    <ion-navbar>
+      <ion-buttons right="">
+        <button type="button" ion-button icon-only (click)="onLogout()" color="primary">
+          <ion-icon name="log-out"></ion-icon>
+          Logout
+        </button>
+      </ion-buttons>
+      <ion-title >{{title}}</ion-title>
+    </ion-navbar>
+
+  </ion-header>
+
+
+  <ion-content >
+
+    <!-- Slidebar -->
+<div padding>
+
+    <p text-center class="no-padding">Zoek in een straal van <b>{{distance}}</b> km</p>
+    <ion-range class="no-padding" min="11" max="15"  [(ngModel)]="zoom" (ionChange)="onRangeChange($event)" padding="0">  <!-- (ionChange)="onRangeChange($event)" -->
+      <ion-icon range-left small name="pin"></ion-icon>
+      <ion-icon range-right name="pin"></ion-icon>
+    </ion-range>
+</div>
+
+
+    <!-- Map -->
+
+  <div #map id="map" data-tap-disabled="true"></div>
+    <!-- Position button -->
+    <ion-buttons>
+        <button type="button" ion-button full (click)="getUserPosition()">
+          <ion-icon></ion-icon><!--navigate-->
+          Show my current position
+        </button>
+      </ion-buttons>
+
+      <!-- List of drivers -->
+    <div *ngIf="driversInZone">
+      <ion-card class="marginCards" *ngFor="let driver of driversInZone" (click)="onChooseDriver(driver)">
+
+          <ion-list>
+            <ion-item>
+              <ion-icon name="contact" icon-only large="" item-start color="primary"></ion-icon>
+              <div class="itemTest">{{driver?.firstName }} {{ driver?.lastName}}</div>
+            </ion-item>
+            <ion-item >
+              <ion-icon name="locate" icon-only large="" item-start color="primary"></ion-icon>
+              <div class="itemTest">{{driver?.locationAddress}}</div>
+            </ion-item>
+            <ion-item>
+              <ion-icon name="navigate" icon-only large="" item-start color="primary"></ion-icon>
+              {{driver?.distance / 1000 | number: '1.2-2'}} km
+            </ion-item>
+            <ion-item>
+              <ion-icon name="time" icon-only large="" item-start color="primary"></ion-icon>
+              {{driver?.duration / 60 | number: '1.1-1'}} min
+
+            </ion-item>
+            <ion-item>
+                <ion-icon name="star-half" icon-only large="" item-start color="primary"></ion-icon>
+                <star-rating-comp item-start [starType]="'svg'"
+                                  numOfStars="5"
+                                  size="medium"
+                                  [rating]="driver?.rating"
+                                  [staticColor]="'ok'"
+                                  [readOnly]="true"
+                ></star-rating-comp>
+              <h3  class="roundBorder" item-end *ngIf="driver?.totalPrice">{{driver?.totalPrice | number: '1.2-2'}}</h3>
+            </ion-item>
+          </ion-list>
+      </ion-card>
+    </div>
+    <ion-fab right bottom *ngIf="!drivers[0]?.totalPrice">
+      <button ion-fab color="secondary" (click)="placeOrder()"><ion-icon name="add"></ion-icon></button>
+    </ion-fab>
+  </ion-content>

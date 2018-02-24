@@ -1,0 +1,43 @@
+@import "../../../node_modules/css-star-rating/dist/scss/star-rating";
+page-list-drivers {
+
+ #map {
+    height: 70%;
+    width: 100%;
+  }
+  .borderX {
+    border: solid 2px red;
+  }
+  .no-padding {
+    padding: 0px !important;
+  }
+  ion-badge {
+    font-size: $badge-font-size;
+  }
+  .roundBorder{
+    border: solid 2px #2eae64;
+    border-radius: 15%;
+    text-align: center;
+    color: #1e8031;
+    font-weight: bold;
+    padding: 7px;
+  }
+  h3::after{
+    content: " €";
+  }
+  .itemTest{
+    //border: solid 2px red;
+    // margin-top: -25px;
+    // margin-left: 23px;
+    // overflow: auto ;
+    white-space: normal ;
+  }
+  ion-item{
+    overflow: auto;
+  }
+  .marginCards {
+    margin-top: 30px;
+  }
+  $badge-font-size: 1.8rem;
+}
+

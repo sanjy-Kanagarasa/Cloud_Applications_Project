@@ -1,0 +1,38 @@
+<ion-content class="login-content" padding>
+  <ion-row class="logo-row">
+    <ion-col></ion-col>
+    <ion-col col-8>
+      <img src="http://i67.tinypic.com/2v1l188.jpg"/>
+    </ion-col>
+    <ion-col></ion-col>
+  </ion-row>
+  <div class="login-box">
+    <form (ngSubmit)="onLogin(loginForm)" #loginForm="ngForm">
+      <ion-row>
+        <ion-col>
+          <ion-list >
+
+            <ion-item ion-item>
+              <ion-label icon-only > <ion-icon color="darkGreen" name="person" ></ion-icon></ion-label>
+              <ion-input type="email" placeholder="Email" name="email" ngModel email="true" required></ion-input>
+            </ion-item>
+
+            <ion-item>
+              <ion-label icon-only> <ion-icon color="darkGreen" name="lock"></ion-icon></ion-label>
+              <ion-input type="password" placeholder="Password" ngModel name="password" required></ion-input>
+            </ion-item>
+
+          </ion-list>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col class="signup-col">
+          <button ion-button class="submit-btn" full type="submit" [disabled]="!loginForm.valid">Login</button>
+          <button ion-button class="register-btn" block clear (click)="onCreateAccount()" type="button">Create New Account</button>
+        </ion-col>
+      </ion-row>
+
+    </form>
+  </div>
+</ion-content>

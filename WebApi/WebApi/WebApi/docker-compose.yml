@@ -1,0 +1,17 @@
+version: "3"
+services:
+    api:
+        build: .
+        ports:
+            - "8000:8000"
+        depends_on:
+            - db
+        restart: always
+    db:
+        image: mysql
+        restart: always
+        environment:
+            MYSQL_ROOT_PASSWORD: "123456"
+            MYSQL_DATABASE: "uber"
+            MYSQL_USER: "uber"
+            MYSQL_PASSWORD: "123456"

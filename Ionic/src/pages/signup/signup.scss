@@ -1,0 +1,48 @@
+page-signup {
+
+  .toolbarUser{
+    margin-top: -5px;
+  }
+  .login-content {
+    background: #56CA96;
+
+    .login-box {
+      background: #509287;
+      padding: 20px 20px 0px 20px;
+      margin-top: 30px;
+    }
+
+    ion-row {
+      align-items: center;
+      text-align: center;
+    }
+
+    ion-item {
+      //border-radius: 5px !important;
+      //padding-left: 30px !important;
+      //font-size: 0.9em;
+      border-bottom: 1px solid #738695;
+      box-shadow: none !important;
+      overflow: hidden;
+    }
+
+    .secondCard{
+      border-radius: 10px;
+    }
+    .signup-col {
+      margin: 0px 16px 0px 16px;
+      padding-bottom: 20px;
+    }
+
+    .item-inner {
+      border-bottom-color: #ffffff !important;
+      box-shadow: none !important;
+    }
+
+    .submit-btn {
+      background: #51CFB1;
+      border-radius: 30px !important;
+      border: 1px solid #ffffff;
+    }
+  }
+}

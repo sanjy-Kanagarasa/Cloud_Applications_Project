@@ -1,0 +1,117 @@
+
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Place Order</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only>
+        <ion-icon name="cart"></ion-icon>
+        <ion-badge item-end>{{shoppingCart.cart.length}}</ion-badge>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-card  no-padding>
+    <form #f="ngForm" (submit)="onAddToCart(f)" >
+      <ion-col no-padding="">
+      <div *ngFor="let i of addFlavours; let n = index"><!--*ngIf="addFlavour==3"-->
+        <ion-row padding-left padding-right >
+          <ion-label >Flavour</ion-label>
+          <ion-select [(ngModel)]="addFlavours[n].name" name="flavour_{{n}}" placeholder="Flavour"
+                      interface="popover" required>
+            <div *ngFor="let flavour of flavoursToSelect[n]; let idx = index">
+                <ion-option
+                  value="{{flavours[idx]}}">
+                  {{flavour}}</ion-option>
+            </div>
+
+          </ion-select>
+        </ion-row>
+        <ion-row justify-content-center >
+          <div class="no-padding" align-items-center>
+            <button type="button" (click)="decreaseAmount(n)" small="" ion-button color="primary" outline=""><ion-icon name="remove"></ion-icon></button>
+            <button type="button" ion-button color="primary" small="" clear=""
+                    >{{addFlavours[n].amount}}
+            </button><!--ngModel name="amount{{amount}}"-->
+            <button type="button" (click)="increaseAmount(n)" small="" ion-button color="primary" outline=""><ion-icon name="add"></ion-icon></button>
+          </div>
+        </ion-row>
+      </div>
+      <ion-row no-padding no-margin >
+        <ion-col>
+          <button ion-button clear small color="primary" type="submit"
+                  [disabled]="!f.valid" icon-start>
+            <ion-icon name='cart'></ion-icon>
+            To Cart
+          </button>
+        </ion-col>
+        <ion-col text-center>
+          <button ion-button clear small color="primary" type="button" *ngIf="f.valid"
+                          (click)="onAddFlavour()" icon-start>
+          <ion-icon name='add'></ion-icon>
+          Add flavour
+        </button>
+          <button ion-button clear small color="danger" type="button" *ngIf="!f.valid " class="float"
+                  (click)="onRemoveFlavour()" icon-start
+                  [disabled]="f.valid || addFlavours.length==1">
+            <ion-icon name='trash'></ion-icon>
+            Remove
+          </button>
+        </ion-col>
+      </ion-row>
+    </ion-col>
+    </form>
+  </ion-card>
+
+  <!--Shopping list-->
+  <ion-card >
+    <ion-card-header text-center="" >
+        Shopping cart
+        <ion-badge item-end>{{shoppingCart.cart.length}}</ion-badge>
+    </ion-card-header>
+    <ion-card-content>
+  <ion-list>
+    <ion-item *ngIf="shoppingCart.cart.length == 0" text-center="">
+      <h4>Your shopping cart is empty!</h4>
+    </ion-item>
+    <ion-item-sliding *ngFor="let item of shoppingCart.cart" >
+      <ion-item >
+        <h5>
+          <ion-icon name="ice-cream"></ion-icon>
+          <span *ngFor="let ice of item.iceCream; let i = index; let last = last" displayFormat="">
+              {{ice.name | slice:0:5}}: <span>{{ice.amount}} <span *ngIf="!last">,</span>
+            </span></span>
+        </h5>
+        <p></p>
+      </ion-item>
+      <ion-item-options>
+        <button ion-button color="danger" (click)="onRemoveFromList(item)">
+          <ion-icon name="trash"></ion-icon>
+          Delete
+        </button>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
+    </ion-card-content>
+  </ion-card>
+  <ion-row>
+    <ion-col col-6="">
+      <button ion-button full="" color="danger" type="submit"
+              [disabled]="false" round (click)="backToMap()">
+        Back to map
+      </button>
+    </ion-col>
+    <ion-col col-6="">
+      <button ion-button  full color="primary" type="submit"
+              [disabled]="shoppingCart.cart.length == 0" round="" (click)="placeOrder()">
+
+        Place Order
+      </button>
+    </ion-col>
+  </ion-row>
+
+</ion-content>

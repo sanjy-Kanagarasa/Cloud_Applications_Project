@@ -1,0 +1,46 @@
+
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Review</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-card>
+    <ion-card-header text-center>
+      Review for {{driver.firstName}}
+    </ion-card-header>
+    <ion-card-content>
+      <ion-label >{{reviewText}}</ion-label>
+      <star-rating-comp item-end [starType]="'svg'"
+                        numOfStars="5"
+                        size="large"
+                        [speed]="'immediately'"
+                        [staticColor]="'ok'"
+                        (onRatingChange)="onRatingChange($event)" required
+      ></star-rating-comp>
+      <ion-item>
+        <ion-label color="primary" floating>Additional Comments...</ion-label>
+        <ion-textarea [(ngModel)]="review.review" required></ion-textarea>
+      </ion-item>
+    </ion-card-content>
+  </ion-card>
+  <ion-row>
+    <ion-col col-6="" text-center="">
+      <button ion-button  round full clear type="button"
+              (click)="onNotNow()">
+        Not now
+      </button>
+    </ion-col>
+    <ion-col col-6="">
+      <button ion-button type="button"
+               full round (click)="onSubmitReview()" [disabled]="review.rating <= 0 ">
+
+        Submit Review
+      </button>
+    </ion-col>
+  </ion-row>
+</ion-content>

@@ -1,0 +1,25 @@
+page-order-confirm {
+  .borderX {
+    border: red solid 2px;
+  }
+  table{
+    border: 1px solid black;
+    border-collapse: collapse;
+  }
+  th, td {
+    padding: 5px;
+    text-align: left;
+  }
+  .addEuro::after{
+    content: " €";
+  }
+
+  .whiteSpace{
+    white-space: normal ;
+  }
+  .noPadding{
+    padding: 0;
+    margin-bottom: -10px;
+    margin-top: -10px;
+  }
+}

@@ -1,0 +1,52 @@
+
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Current Order</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <table style="width:100%" >
+    <tr>
+      <th style="width:50%">Flavour</th>
+      <th style="width:25%" text-center>Amount</th>
+      <th style="width:25%" text-center>Price</th>
+    </tr>
+  </table>
+  <table style="width:100%" *ngFor="let item of shoppingCart?.cart">
+    <!--<div *ngFor="let item of shoppingCart?.cart">-->
+    <tr *ngFor="let ice of item?.iceCream" >
+      <td style="width:50%">{{ice.name}}</td>
+      <td style="width:25%" text-center="">{{ice.amount}}</td>
+      <td style="width:25%" text-center class="addEuro">{{ice.price| number: '1.2-2'}}</td>
+    </tr>
+  </table>
+  <table style="width:100%">
+    <tr  >
+      <td style="width:50%">Total</td>
+      <td style="width:25%" text-center=""></td>
+      <td style="width:25%" text-center class="addEuro">{{totalPrice | number: '1.2-2'}}</td>
+    </tr>
+  </table>
+  <ion-card>
+    <ion-card-header text-center>
+      Customer details
+    </ion-card-header>
+    <ion-card-content>
+      <ion-list>
+        <ion-item>
+          <ion-icon name="contact" icon-only large="" item-start color="primary"></ion-icon>
+          <div class="itemTest">{{customer?.firstName }} {{ customer?.lastName}}</div>
+        </ion-item>
+        <ion-item>
+            <ion-icon name="locate" icon-only large="" item-start color="primary"></ion-icon>
+            <div class="itemTest">{{address?.toString() }}</div>
+        </ion-item>
+
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

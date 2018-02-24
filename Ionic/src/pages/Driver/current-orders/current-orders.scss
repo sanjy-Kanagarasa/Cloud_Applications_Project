@@ -1,0 +1,29 @@
+page-current-orders {
+  table{
+    border: 1px solid black;
+    border-collapse: collapse;
+  }
+  th, td {
+    padding: 5px;
+    text-align: left;
+  }
+  .addEuro::after{
+    content: " €";
+  }
+
+  .itemTest{
+    //border: solid 2px red;
+    // margin-top: -25px;
+    // margin-left: 23px;
+    // overflow: auto ;
+    white-space: normal ;
+  }
+  ion-item{
+    overflow: auto;
+  }
+  .marginCards {
+    margin-top: 30px;
+  }
+  $badge-font-size: 1.8rem;
+
+}
